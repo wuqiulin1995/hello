@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 	char *buf_w_m=nvm_buf_alloc(geo,16);
 	nvm_buf_fill(buf_w_m,16);
 	nvm_buf_to_file(buf_w_d,16384,"buf_w_d");
-	nvm_huf_to_file(buf_w_m,16,"buf_w_m")
+	nvm_huf_to_file(buf_w_m,16,"buf_w_m")；
 
 	char *buf_r_d=nvm_buf_alloc(geo,16384);   //16K buffer
 	char *buf_r_m=nvm_buf_alloc(geo,16);
