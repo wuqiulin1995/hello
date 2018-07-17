@@ -1,0 +1,17 @@
+set $name=
+set $nfiles=
+set $path=
+set $filesize=
+set $runtime=
+
+define fileset name=$name,entries=$nfiles,filesize=$filesize,path=$path
+
+  define process name="SwriteP",instances=1 {
+    thread name="SwriteT",instances=1 {
+      flowop openfile name="openOP",filesetname=$name
+      flowop write name="SwriteOP",iosize =16K,directio,filesetname=$name
+      flowop closefile name="closeOP"
+    }
+  }
+
+  run $runtime
