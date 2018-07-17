@@ -1,0 +1,17 @@
+set $name=
+set $nfiles=
+set $path=
+set $filesize=
+set $runtime=
+
+define fileset name=$name,entries=$nfiles,filesize=$filesize,path=$path
+
+  define process name="SreadP",instances=1 {
+    thread name="SreadT",instances=1 {
+      flowop openfile name="openOP",filesetname=$name
+      flowop read name="SreadOP",iosize =16K,directio,filesetname=$name
+      flowop closefile name="closeOP"
+    }
+  }
+
+  run $runtime
